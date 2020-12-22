@@ -127,19 +127,22 @@ namespace TobiiFormApp
 
             //handle the 'toggle gaze control' button event
             form.button1.Click += new System.EventHandler(toggleGazeMouse);
-
+            int virt_vir_x=0, virt_vir_y=0,sense=5;
+            
             //create the data stream
             var gazePointDataStream = host.Streams.CreateGazePointDataStream(Tobii.Interaction.Framework.GazePointDataMode.LightlyFiltered);
             gazePointDataStream.GazePoint((x, y, _) =>
             {
-                if (enableGazeMouseControl)
+                if (enableGazeMouseControl&& virt_vir_x!=((((int)x) / sense) % sense) &&virt_vir_y!=((((int)y) / sense) % sense))
                 {
                     moveCursor((int)x, (int)y);
                     //update the form labels with gaze coordinate
                     form.label3.Invoke((MethodInvoker)(() => form.label3.Text = x.ToString()));
                     form.label4.Invoke((MethodInvoker)(() => form.label4.Text = y.ToString()));
+                    virt_vir_x = (((int)x) / sense) % sense;
+                    virt_vir_y = (((int)y) / sense) % sense;
                 }
-                
+
             });
 
             Application.Run(form);
