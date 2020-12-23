@@ -140,7 +140,7 @@ namespace TobiiFormApp
                     form.label3.Invoke((MethodInvoker)(() => form.label3.Text = x.ToString()));
                     form.label4.Invoke((MethodInvoker)(() => form.label4.Text = y.ToString()));
                     virt_vir_x = (((int)x) / sense) % sense;
-                    virt_vir_y = (((int)y) / sense) % sense;
+                    virt_vir_y = (((int)y) / sense) % sense;// To start zoom use the app http://www.orangemaker.sakura.ne.jp/product/Kokodeka/download.html Kokodeka it works best
                 }
 
             });
