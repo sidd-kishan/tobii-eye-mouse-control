@@ -127,7 +127,7 @@ namespace TobiiFormApp
 
             //handle the 'toggle gaze control' button event
             form.button1.Click += new System.EventHandler(toggleGazeMouse);
-            int virt_vir_x=0, virt_vir_y=0,sense=5;
+            int virt_vir_x=0, virt_vir_y=0,sense=20;
             
             //create the data stream
             var gazePointDataStream = host.Streams.CreateGazePointDataStream(Tobii.Interaction.Framework.GazePointDataMode.LightlyFiltered);
